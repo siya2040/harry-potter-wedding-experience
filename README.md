@@ -1,5 +1,6 @@
 ﻿# ⚡ An Unbreakable Vow | Harry Potter-Themed Interactive Wedding Experience
 
+[![Java 21+](https://img.shields.io/badge/Backend-Java%2021%2B-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)](https://github.com/siya2040/harry-potter-wedding-experience/)
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-ffd700?style=for-the-badge&logo=github)](https://siya2040.github.io/harry-potter-wedding-experience/)
 [![Mobile First](https://img.shields.io/badge/Design-Mobile--First-7c0a02?style=for-the-badge)](https://siya2040.github.io/harry-potter-wedding-experience/)
 [![WebGL](https://img.shields.io/badge/Shaders-WebGL%20Distortion-1b263b?style=for-the-badge&logo=webgl)](https://siya2040.github.io/harry-potter-wedding-experience/)
@@ -78,6 +79,18 @@ The experience features a completely procedural, zero-dependency synthesizer (no
 
 ---
 
+
+## ☕ Java Backend Architecture & REST APIs
+In addition to the interactive client-side web experience, this project includes a complete **Java 21+ backend server** (src/main/java/com/hogwarts/wedding/MagicalWeddingServer.java) providing:
+- **Embedded Java HTTP Server**: Zero-dependency, lightweight server using com.sun.net.httpserver.HttpServer with modern virtual threads.
+- **REST APIs**:
+  - POST /api/rsvp: Receives guest RSVPs, persists names and house affiliations to a thread-safe registry.
+  - GET /api/sorting-hat: Server-side Sorting Hat logic and wisdom determination.
+  - GET /api/countdown: High-precision server-side temporal calculations using java.time.Duration.
+- **Launcher**: Double-click 
+un_java_server.bat to compile with javac and run the entire platform via Java on http://localhost:8080/.
+
+---
 ## 🛠️ Technical Stack & Architecture
 
 - **HTML5 & SVG**: Clean semantic structure, inline vector crests, inlined data URI textures.

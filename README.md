@@ -1,4 +1,4 @@
-﻿# ⚡ An Unbreakable Vow | Harry Potter-Themed Interactive Wedding Experience
+# ⚡ An Unbreakable Vow | Harry Potter-Themed Interactive Wedding Experience
 
 [![Java 21+](https://img.shields.io/badge/Backend-Java%2021%2B-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)](https://github.com/siya2040/harry-potter-wedding-experience/)
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-ffd700?style=for-the-badge&logo=github)](https://siya2040.github.io/harry-potter-wedding-experience/)
@@ -8,12 +8,12 @@
 
 > A mobile-first, one-page interactive wedding experience created for the UI/UX Design internship assignment.
 > 
-> Rather than a conventional wedding website with a top navigation bar and static rectangular blocks, this experience unfolds as an enchanted story that reacts dynamically to scrolling, swiping, tapping, and pointer movement.
+> Rather than a conventional wedding website with a top navigation bar and static rectangular blocks, this experience unfolds as an enchanted digital story that reacts dynamically to scrolling, swiping, tapping, and pointer movement.
 
 ---
 
 ## 🌐 Live Experience
-Explore the live website directly on any mobile phone or browser:
+Explore the live website directly on any mobile phone or browser:  
 👉 **[https://siya2040.github.io/harry-potter-wedding-experience/](https://siya2040.github.io/harry-potter-wedding-experience/)**
 
 *(For desktop review, a top toolbar toggle allows switching between an **iPhone 16 Pro mockup frame** and **Full-Screen Cinematic mode**).*
@@ -79,44 +79,97 @@ The experience features a completely procedural, zero-dependency synthesizer (no
 
 ---
 
+## ☕ Java Backend Architecture & Domain Models
+In addition to the interactive client-side web experience, this project includes a complete **Java 21+ backend architecture** (`src/main/java/com/hogwarts/wedding/`):
 
-## ☕ Java Backend Architecture & REST APIs
-In addition to the interactive client-side web experience, this project includes a complete **Java 21+ backend server** (src/main/java/com/hogwarts/wedding/MagicalWeddingServer.java) providing:
-- **Embedded Java HTTP Server**: Zero-dependency, lightweight server using com.sun.net.httpserver.HttpServer with modern virtual threads.
-- **REST APIs**:
-  - POST /api/rsvp: Receives guest RSVPs, persists names and house affiliations to a thread-safe registry.
-  - GET /api/sorting-hat: Server-side Sorting Hat logic and wisdom determination.
-  - GET /api/countdown: High-precision server-side temporal calculations using java.time.Duration.
-- **Launcher**: Double-click 
-un_java_server.bat to compile with javac and run the entire platform via Java on http://localhost:8080/.
+### Core Architecture:
+- **`MagicalWeddingServer.java`**: Embedded, zero-dependency HTTP server using `com.sun.net.httpserver.HttpServer` with modern virtual threads.
+- **`model/HogwartsHouse.java`**: House enum with colors, mascots, mottos, and character traits.
+- **`model/Guest.java`**: Guest domain model encapsulating registration metadata and attendance.
+- **`model/TicketPassage.java`**: Platform 9 ¾ ticket generator and coach assignment logic.
+- **`model/WeddingTimelineEvent.java`**: Ceremony milestone record model.
+- **`service/SortingHatService.java`**: Ceremony deliberator calculating house sorting logic.
+- **`service/MaraudersMapPathfinder.java`**: Mathematical waypoint pathfinding engine generating footstep coordinates across the parchment map.
+- **`service/OwlPostDispatcher.java`**: Thread-safe message queue simulating flight duration and dragon wax seals.
+- **`service/PatronusManifestationService.java`**: Corporeal Patronus generator mapping happiest memories to celestial forms.
 
----
-## 🛠️ Technical Stack & Architecture
-
-- **HTML5 & SVG**: Clean semantic structure, inline vector crests, inlined data URI textures.
-- **Modern CSS3**: 3D CSS transforms, keyframe physics, fluid typography (`clamp()`), and responsive design.
-- **JavaScript (ES6+)**: Modular, zero-dependency architecture.
-- **WebGL**: Liquid displacement ripple fragment and vertex shaders.
-- **HTML5 Canvas (60 FPS)**: Custom particle physics engine trailing sparks, stars, and embers.
-- **Web Audio API**: Real-time procedural sound synthesizer.
+### REST APIs:
+- `POST /api/rsvp` — Receives guest RSVPs, persists names and house affiliations to a thread-safe registry.
+- `GET /api/sorting-hat` — Server-side Sorting Hat logic and wisdom determination.
+- `GET /api/countdown` — High-precision server-side temporal calculations using `java.time.Duration`.
 
 ---
 
-## 💻 Local Development & Testing
+## 📁 Project Structure
 
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/siya2040/harry-potter-wedding-experience.git
-   cd harry-potter-wedding-experience
-   ```
-2. Run the local server:
-   - **Windows**: Double-click `run_local_server.bat`
-   - **Command Line**: `py -m http.server 8000` or `npx serve`
-3. Open `http://localhost:8000/` in your browser.
+```
+harry-potter-wedding-experience/
+├── index.html                   # Core semantic markup, SVG definitions, canvas overlays
+├── pom.xml                      # Maven project configuration for Java 21+
+├── .gitattributes               # Linguist language configuration
+├── run_java_server.bat          # 1-Click compiler & runner for Java backend (Port 8080)
+├── run_local_server.bat         # 1-Click local server runner (Port 8000)
+├── css/
+│   ├── main.css                 # Theme variables, typography, floating candles
+│   ├── envelope.css             # 3D folding envelope & wax seal shatter
+│   ├── marauder.css             # Aged parchment map, ink trails & footsteps
+│   ├── gallery.css              # Daily Prophet newsprint & living portrait frames
+│   ├── timeturner.css           # 3D spinning concentric rings countdown
+│   ├── timeline.css             # Unfolded parchment folding map for order of events
+│   ├── rsvp.css                 # Quill desk, house crests & owl fly-off animation
+│   ├── savedate.css             # Snitch hovering & starry constellation reveal
+│   ├── spells.css               # Wand spellcaster dock, patronus & letter cascade
+│   └── ticket.css               # 3D Platform 9 ¾ embossed golden ticket
+├── js/
+│   ├── app.js                   # Application coordinator & live sync
+│   ├── audio.js                 # Web Audio API synthesizer (Hedwig's Theme)
+│   ├── wand-particles.js        # 60 FPS Canvas particle engine for sparks & embers
+│   ├── spells.js                # Interactive spell controller (Lumos, Patronus, etc.)
+│   ├── sorting-hat.js           # Talking Sorting Hat ceremony logic
+│   ├── envelope.js              # Wax seal break & invitation reveal
+│   ├── marauders-map.js         # Scroll-driven footstep placement along SVG paths
+│   ├── liquid-distortion.js     # WebGL displacement ripple shader for portraits
+│   ├── time-turner.js           # 3D interactive spinning countdown timer
+│   ├── rsvp.js                  # Interactive quill typing & owl post dispatch
+│   └── save-date.js             # Snitch animation & .ics calendar file generator
+└── src/main/java/com/hogwarts/wedding/
+    ├── MagicalWeddingServer.java # Java HTTP & REST API server
+    ├── model/
+    │   ├── Guest.java
+    │   ├── HogwartsHouse.java
+    │   ├── TicketPassage.java
+    │   └── WeddingTimelineEvent.java
+    └── service/
+        ├── MaraudersMapPathfinder.java
+        ├── OwlPostDispatcher.java
+        ├── PatronusManifestationService.java
+        └── SortingHatService.java
+```
+
+---
+
+## 💻 How to Run Locally
+
+### Option 1: Java Backend Server (Recommended for Java Developers)
+- **Windows**: Double-click `run_java_server.bat`
+- **Command Line**:
+  ```bash
+  javac -d bin src/main/java/com/hogwarts/wedding/MagicalWeddingServer.java
+  java -cp bin com.hogwarts.wedding.MagicalWeddingServer
+  ```
+  Then visit `http://localhost:8080/`.
+
+### Option 2: Lightweight Local Server
+- **Windows**: Double-click `run_local_server.bat`
+- **Command Line**: `py -m http.server 8000` or `npx serve`
+  Then visit `http://localhost:8000/`.
+
+### Option 3: Direct Browser Open
+Double-click `index.html` to open it directly in Chrome, Edge, Safari, or Firefox!
 
 ---
 
 ## 👩‍💻 Author
 **Siya Chauhan**
 - GitHub: [@siya2040](https://github.com/siya2040)
-- Project: [Harry Potter Interactive Wedding Experience](https://github.com/siya2040/harry-potter-wedding-experience)
+- Repository: [harry-potter-wedding-experience](https://github.com/siya2040/harry-potter-wedding-experience)

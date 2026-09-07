@@ -1,75 +1,109 @@
-﻿# An Unbreakable Vow: Harry Potter-Inspired Interactive Wedding Experience
+﻿# ⚡ An Unbreakable Vow | Harry Potter-Themed Interactive Wedding Experience
 
-A mobile-first, one-page interactive digital story created for the Design Internship assignment.
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-ffd700?style=for-the-badge&logo=github)](https://siya2040.github.io/harry-potter-wedding-experience/)
+[![Mobile First](https://img.shields.io/badge/Design-Mobile--First-7c0a02?style=for-the-badge)](https://siya2040.github.io/harry-potter-wedding-experience/)
+[![WebGL](https://img.shields.io/badge/Shaders-WebGL%20Distortion-1b263b?style=for-the-badge&logo=webgl)](https://siya2040.github.io/harry-potter-wedding-experience/)
+[![Web Audio API](https://img.shields.io/badge/Audio-Hedwig's%20Theme-2b180d?style=for-the-badge)](https://siya2040.github.io/harry-potter-wedding-experience/)
 
-Rather than a conventional wedding site with a top navigation bar and static rectangular blocks, this experience unfolds as an enchanted journey through the wizarding world—blending authentic Harry Potter lore, 3D animations, scroll-driven interactions, and procedural sound design.
-
----
-
-## 🧙‍♂️ Experience Overview & Narrative Acts
-
-1. **Act I: The Owl Delivery & 3D Wax Seal Opening**
-   - Starry night sky with drifting castle clouds and floating Hogwarts candles.
-   - An owl swoops into view delivering the sealed parchment invitation.
-   - **Micro-Interaction**: Tap or drag the 3D crimson wax seal (`J & S` monogram) to break it with bursting wax particles and sound. The envelope flap rotates in 3D, and the gold-trimmed letter unrolls to reveal the couple (*Lord Julian Vance & Lady Seraphina Sterling*).
-
-2. **Act II: Marauder's Map Journey (Scroll-Driven Footsteps & Ink Path)**
-   - *"I solemnly swear that we are up to no good."*
-   - As the visitor scrolls down, alternating footsteps (left and right shoe prints) stamp onto the aged parchment background following a winding ink trail.
-   - Story milestones reveal the couple's history: *The Restricted Section*, *The Silver Patronuses*, and *The Astronomy Tower Vow*.
-   - Concludes with *"Mischief Managed..."* as the parchment transitions.
-
-3. **Act III: The Daily Prophet & WebGL Liquid Distortion Gallery**
-   - Inspired by the [Codrops Liquid Distortion Slider](https://tympanus.net/Development/LiquidDistortion/).
-   - Framed within a vintage wizarding newspaper edition with halftone grain and living photo shimmer.
-   - **Interactive WebGL Shader**: Swiping or dragging left/right ripples the portrait with fluid liquid displacement distortion.
-   - **Lumos Secret Message**: Moving your wand (finger/mouse) across the portrait illuminates it with a wand spotlight, revealing secret romantic notes in glowing invisible ink.
-
-4. **Act IV: The Enchanted Time-Turner & Astronomical Countdown**
-   - 3D interactive gyroscope with concentric spinning golden rings and a miniature hourglass with flowing sand.
-   - Users can drag and tilt the rings in 3D space, triggering celestial chime tones and golden sparks.
-   - Real-time countdown tracking Days, Hours, Minutes, and Seconds until the wedding.
-
-5. **Act V: Order of Events (The Feast & Ceremony Itinerary)**
-   - Designed as a foldout parchment map with a glowing gold timeline spine and wax markers.
-   - Interactive events: *Astronomy Tower Gathering & Elixirs*, *The Unbreakable Vow*, *Great Hall Banquet*, *The Yule Ball*, and *Lumos Send-Off*.
-   - Tapping any card smoothly expands secret lore, dress code advice, and seating arrangements.
-
-6. **Act VI: The Enchanted Quill & Owl Post RSVP**
-   - An antique mahogany desk with a hovering feather quill.
-   - As the guest types their name, the quill scratches across the paper in real-time cursive ink script.
-   - Interactive house sorting badges (Gryffindor, Slytherin, Ravenclaw, Hufflepuff) with house feast selections.
-   - **"Dispatch via Owl Post"**: The parchment folds into an origami envelope, an owl hoots and takes flight into the stars, and a personalized confirmation scroll appears.
-
-7. **Act VII: Cinematic "Lumos Maxima" Finale & Save the Date**
-   - A golden Snitch flutters across the screen with buzzing metallic wings.
-   - Tapping the Snitch casts *Lumos Maxima*, triggering a radiant light burst and illuminating a starlit constellation that spells out the date.
-   - **Muggle Calendar Integration**: Click *"Add to Muggle Calendar"* to automatically generate and download an `.ics` calendar invite compatible with Google Calendar, Apple Calendar, and Outlook.
-   - *"Replay Magical Journey"* smoothly scrolls back to the beginning for another pass.
+> A mobile-first, one-page interactive wedding experience created for the UI/UX Design internship assignment.
+> 
+> Rather than a conventional wedding website with a top navigation bar and static rectangular blocks, this experience unfolds as an enchanted story that reacts dynamically to scrolling, swiping, tapping, and pointer movement.
 
 ---
 
-## 🎨 Design & Technical Highlights
+## 🌐 Live Experience
+Explore the live website directly on any mobile phone or browser:
+👉 **[https://siya2040.github.io/harry-potter-wedding-experience/](https://siya2040.github.io/harry-potter-wedding-experience/)**
 
-- **Mobile-First Execution**: Designed specifically around touch ergonomic targets, swipe gestures, and fluid viewport heights (`clamp()`).
-- **Evaluator Showcase Mode**: A top toolbar allows evaluators on desktop to toggle between an **iPhone 16 Pro mockup frame** (with realistic bezels, dynamic island, and glass reflections) and **Full-Screen Cinematic Mode**.
-- **Wand Particle Engine**: Custom 60 FPS HTML5 Canvas particle system trailing golden sparks, star dust, and floating embers behind every finger touch or cursor move.
-- **Procedural Web Audio API**: Completely self-contained sound synthesizer that creates wand swooshes, crystalline music box melodies, wax cracking snaps, quill pen scratches, and owl hoots with zero external audio assets that could fail to load.
-- **Zero Build Dependencies**: Pure modern HTML5, CSS3, WebGL, and ES6 JavaScript that runs instantly in any browser without needing `npm install` or complex build steps.
+*(For desktop review, a top toolbar toggle allows switching between an **iPhone 16 Pro mockup frame** and **Full-Screen Cinematic mode**).*
 
 ---
 
-## 🚀 How to Run
+## 🪄 Narrative Acts & Key Interactions
 
-### Method 1: Double-Click Batch File (Windows)
-Double-click `run_local_server.bat` in this folder. It will start a local HTTP server at `http://localhost:8000/` and open your browser automatically.
+### 1. Act I: Cinematic Prologue & 3D Wax Seal Opening
+- **Text Reveal**: As specified in the assignment brief, glowing text fades in: *"You are invited..."*, dissolves into golden stardust, followed by *"...to a magical wedding."*
+- **Falling Hogwarts Letters**: 18 envelopes with wax seals tumble through the air with 3D rotation, evoking the iconic Privet Drive chimney flurry.
+- **3D Wax Seal**: An owl delivers the sealed parchment envelope. Tapping or dragging the crimson wax seal (`J & S` monogram) shatters the wax with sound and bursting particles, opening the 3D envelope flap and unrolling the gold-trimmed letter for *Lord Julian Vance & Lady Seraphina Sterling*.
 
-### Method 2: Python Command Line
-```bash
-cd C:\Users\siyac\.gemini\antigravity\scratch\magical-wedding-invitation
-py -m http.server 8000
-```
-Then visit `http://localhost:8000/` in your browser.
+### 2. Act II: Marauder's Map (Scroll-Driven Footsteps & Ink Path)
+- Headlined with *"I solemnly swear that we are up to no good."*
+- Dynamic footsteps (alternating left and right shoe prints) stamp onto the aged parchment background following a winding ink trail as the visitor scrolls down.
+- Story milestones reveal the couple's journey: *The Restricted Section*, *Harmonic Silver Patronuses*, and *The Astronomy Tower Vow*, concluding with *"Mischief Managed..."*
 
-### Method 3: Direct File Opening
-You can also open `index.html` directly in Google Chrome, Microsoft Edge, Safari, or Firefox!
+### 3. Act III: The Daily Prophet & WebGL Liquid Distortion Gallery
+- Inspired by the [Codrops Liquid Distortion Slider](https://tympanus.net/Development/LiquidDistortion/) referenced in the brief.
+- Framed in a vintage wizarding newspaper layout with halftone newsprint grain and breathing photo parallax.
+- **Liquid Shader Distortion**: Touch swiping or dragging across portraits triggers a fluid WebGL displacement wave morphing between photos.
+- **Lumos Secret Message**: Moving your wand (finger/mouse) illuminates the photograph with a glowing wand spotlight, revealing hidden romantic notes written in invisible ink.
+
+### 4. Act IV: The Enchanted Time-Turner & Countdown
+- A 3D interactive golden gyroscope with 3 nested rotating rings (Days with Roman numerals, Hours/Minutes, and an inner hourglass with moving sand particles).
+- Visitors can drag and tilt the rings in 3D space with celestial chime notes and sparkling dust.
+- Displays a live real-time countdown (Days, Hours, Minutes, Seconds).
+
+### 5. Act V: Order of Events (The Hogwarts Feast & Wards)
+- An unfolded parchment itinerary map with a glowing gold timeline spine and wax markers.
+- Interactive events: *Astronomy Tower Gathering & Elixirs*, *The Unbreakable Vow*, *Great Hall Banquet*, *The Yule Ball*, and *Lumos Maxima Send-Off*.
+- Tapping any card smoothly expands secret lore, dress code advice ("Wizarding Formal Robes or Muggle Black Tie"), and seating arrangements.
+
+### 6. Act VI: The Enchanted Quill & Talking Sorting Hat RSVP
+- An antique mahogany desk with a hovering gold feather quill that pens text in real-time cursive ink script as you type.
+- **Talking Sorting Hat**: Tap the animated Sorting Hat to hear classic deliberation (*"Hmm, difficult... very difficult... plenty of courage, I see..."*) before being placed into Gryffindor, Slytherin, Ravenclaw, or Hufflepuff!
+- **Owl Post Dispatch**: Clicking *"Dispatch via Owl Post"* folds the letter into an origami envelope; an owl hoots and flies off into the night sky, revealing a personalized acceptance scroll.
+
+### 7. Act VII: 3D Platform 9 ¾ Ticket & Save the Date
+- A golden Snitch flutters across the screen with buzzing wings. Tapping the Snitch casts *Lumos Maxima*, triggering a radiant light burst that illuminates a starry constellation date.
+- **3D Platform 9 ¾ Hogwarts Express Ticket**: An interactive embossed golden train ticket customized dynamically with the guest's name from the RSVP form! Tapping flips the ticket to reveal the official Ministry pass and the **"Add to Muggle Calendar (.ics)"** download button.
+
+---
+
+## 🪄 Interactive Wand Spellcaster Dock
+A floating spell dock enables visitors to cast 4 iconic spells anytime:
+- 🪄 **`Lumos Maxima`**: Radiant white burst of light that illuminates invisible ink secrets.
+- 🦌 **`Expecto Patronum`**: Summons a glowing Silver Stag and Swan Patronus leaping across the screen trailing luminescent mist and chords.
+- 🔓 **`Alohomora`**: Plays an ancient lock tumbler click and unlocks all secret itinerary drawers.
+- 🪶 **`Wingardium Leviosa`**: Puts letters, portraits, and parchments into an anti-gravity floating state.
+
+---
+
+## 🎵 Sound Design with Web Audio API
+The experience features a completely procedural, zero-dependency synthesizer (no external MP3 404s or CORS issues!):
+- **Hedwig's Theme**: Authentic opening 16-note melody on celesta with bell harmonics.
+- **Patronus Chords**: Ethereal multi-octave sweep and choir chime.
+- **Hogwarts Express**: Distant steam train whistle.
+- **Wax Crack & Crumble**: Organic snap when the wax seal breaks.
+- **Quill Pen**: Scratchy whisper when typing in the RSVP field.
+- **Owl Post**: Gentle two-tone soothing owl call.
+
+---
+
+## 🛠️ Technical Stack & Architecture
+
+- **HTML5 & SVG**: Clean semantic structure, inline vector crests, inlined data URI textures.
+- **Modern CSS3**: 3D CSS transforms, keyframe physics, fluid typography (`clamp()`), and responsive design.
+- **JavaScript (ES6+)**: Modular, zero-dependency architecture.
+- **WebGL**: Liquid displacement ripple fragment and vertex shaders.
+- **HTML5 Canvas (60 FPS)**: Custom particle physics engine trailing sparks, stars, and embers.
+- **Web Audio API**: Real-time procedural sound synthesizer.
+
+---
+
+## 💻 Local Development & Testing
+
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/siya2040/harry-potter-wedding-experience.git
+   cd harry-potter-wedding-experience
+   ```
+2. Run the local server:
+   - **Windows**: Double-click `run_local_server.bat`
+   - **Command Line**: `py -m http.server 8000` or `npx serve`
+3. Open `http://localhost:8000/` in your browser.
+
+---
+
+## 👩‍💻 Author
+**Siya Chauhan**
+- GitHub: [@siya2040](https://github.com/siya2040)
+- Project: [Harry Potter Interactive Wedding Experience](https://github.com/siya2040/harry-potter-wedding-experience)

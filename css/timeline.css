@@ -1,0 +1,165 @@
+﻿/* ==========================================================================
+   ACT V: ORDER OF EVENTS - FOLDING PARCHMENT ITINERARY
+   ========================================================================== */
+
+.timeline-section {
+  position: relative;
+  min-height: 100vh;
+  padding: 80px 20px;
+  background: radial-gradient(circle at 50% 10%, #151726 0%, #090a13 70%, #040508 100%);
+  overflow: hidden;
+}
+
+.timeline-header {
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 3;
+}
+
+.timeline-map-container {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+/* Glowing central timeline spine */
+.timeline-spine {
+  position: absolute;
+  top: 15px;
+  bottom: 20px;
+  left: 28px;
+  width: 2px;
+  background: linear-gradient(to bottom, #d4af37 0%, rgba(212, 175, 55, 0.4) 50%, #7c0a02 100%);
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
+}
+
+/* Event Item Card */
+.event-item {
+  position: relative;
+  padding-left: 60px;
+  margin-bottom: 30px;
+  cursor: pointer;
+  transition: transform 0.3s var(--ease-magic);
+}
+
+.event-item:hover {
+  transform: translateX(4px);
+}
+
+/* Wax Seal Marker along the spine */
+.event-wax-marker {
+  position: absolute;
+  top: 12px;
+  left: 17px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #b21818 0%, #7c0a02 70%, #3a0000 100%);
+  border: 2px solid #ffd700;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 0.65rem;
+  z-index: 2;
+  transition: all 0.3s var(--ease-magic);
+}
+
+.event-item:hover .event-wax-marker {
+  transform: scale(1.25);
+  box-shadow: 0 0 16px #ffd700;
+}
+
+/* Parchment Card Content */
+.event-card {
+  background: rgba(247, 241, 225, 0.94);
+  border: 1px solid #c4ab7a;
+  border-radius: 8px;
+  padding: 16px 18px;
+  box-shadow: 
+    0 8px 24px rgba(0,0,0,0.5),
+    inset 0 0 16px rgba(212, 175, 55, 0.15);
+  color: #2b180d;
+  transition: all 0.35s var(--ease-magic);
+}
+
+.event-time-badge {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #7c0a02;
+  letter-spacing: 1.5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.event-icon-badge {
+  font-size: 1.1rem;
+}
+
+.event-title {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a100a;
+  margin-bottom: 4px;
+}
+
+.event-location {
+  font-family: var(--font-gothic);
+  font-size: 0.78rem;
+  color: #6a492b;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.event-location::before {
+  content: '📍';
+  font-size: 0.8rem;
+}
+
+.event-lore {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: #442a17;
+  line-height: 1.4;
+  font-style: italic;
+}
+
+/* Expandable Details Accordion */
+.event-details-drawer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-top: 1px dashed transparent;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.event-item.expanded .event-details-drawer {
+  max-height: 120px;
+  border-top-color: #d4c19c;
+  margin-top: 10px;
+  padding-top: 8px;
+}
+
+.detail-row {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: #5c3818;
+  margin-bottom: 4px;
+}
+
+.detail-row strong {
+  font-family: var(--font-serif);
+  color: #7c0a02;
+  letter-spacing: 0.5px;
+}

@@ -1,0 +1,198 @@
+﻿/* ==========================================================================
+   HARRY POTTER SPELLCASTER DOCK & PATRONUS FX
+   ========================================================================== */
+
+/* Floating Spellcasting Toolbar */
+.spellcaster-dock {
+  position: sticky;
+  top: 50px;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: rgba(14, 16, 28, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 30px;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.6), 0 0 15px rgba(212, 175, 55, 0.2);
+  margin: 10px auto;
+  max-width: 90%;
+  width: fit-content;
+}
+
+.btn-spell {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  color: #ffeb99;
+  font-family: var(--font-serif);
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s var(--ease-magic);
+}
+
+.btn-spell:hover {
+  background: rgba(212, 175, 55, 0.25);
+  border-color: #ffd700;
+  box-shadow: 0 0 12px var(--color-gold-glow);
+  transform: translateY(-2px);
+}
+
+.btn-spell.active {
+  background: linear-gradient(135deg, #7c0a02, #d4af37);
+  color: #fff;
+  border-color: #ffd700;
+  box-shadow: 0 0 16px rgba(255, 215, 0, 0.7);
+}
+
+/* Cinematic Opening Text Prologue */
+.cinematic-prologue-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 40%, #151829 0%, #080911 60%, #020205 100%);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.cinematic-prologue-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.prologue-text-step {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 900;
+  color: #fff4d0;
+  text-shadow: 0 0 25px rgba(212, 175, 55, 0.8), 0 0 50px rgba(255, 215, 0, 0.5);
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.prologue-text-step.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.prologue-text-step.dissolve {
+  opacity: 0;
+  transform: scale(1.15) translateY(-20px);
+  filter: blur(8px);
+}
+
+/* Falling Hogwarts Envelopes Flurry (Privet Drive scene) */
+.falling-letters-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 4;
+}
+
+.falling-letter-item {
+  position: absolute;
+  top: -80px;
+  width: 48px;
+  height: 32px;
+  background: #fbf5e6;
+  border: 1px solid #b89d67;
+  border-radius: 2px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fall-tumble linear infinite;
+}
+
+.falling-letter-item::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #8b0000;
+  box-shadow: 0 0 4px #7c0a02;
+}
+
+@keyframes fall-tumble {
+  0% {
+    transform: translateY(0) rotate(0deg) rotateX(0deg);
+    opacity: 0;
+  }
+  10% { opacity: 0.9; }
+  90% { opacity: 0.9; }
+  100% {
+    transform: translateY(110vh) rotate(360deg) rotateX(180deg);
+    opacity: 0;
+  }
+}
+
+/* Ethereal Silver Patronus Leap (Silver Stag & Swan) */
+.patronus-runner {
+  position: fixed;
+  bottom: 25%;
+  left: -200px;
+  width: 160px;
+  height: 140px;
+  z-index: 99999;
+  pointer-events: none;
+  opacity: 0;
+  filter: drop-shadow(0 0 25px #ffffff) drop-shadow(0 0 45px #90e0ef) drop-shadow(0 0 70px #00b4d8);
+}
+
+.patronus-runner.running {
+  animation: patronus-leap 4s cubic-bezier(0.2, 0.8, 0.4, 1) forwards;
+}
+
+@keyframes patronus-leap {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(0.7) rotate(-5deg);
+  }
+  15% {
+    opacity: 1;
+    transform: translate3d(30vw, -40px, 0) scale(1.1) rotate(5deg);
+  }
+  50% {
+    opacity: 1;
+    transform: translate3d(60vw, 20px, 0) scale(1) rotate(-8deg);
+  }
+  85% {
+    opacity: 0.9;
+    transform: translate3d(90vw, -30px, 0) scale(1.15) rotate(4deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(120vw, -80px, 0) scale(0.8) rotate(10deg);
+  }
+}
+
+/* Wingardium Leviosa Float State */
+.levitating-active .envelope-stage,
+.levitating-active .prophet-sheet,
+.levitating-active .time-turner-stage,
+.levitating-active .rsvp-parchment-scroll {
+  animation: leviosa-float 3s infinite alternate ease-in-out !important;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 35px rgba(255, 215, 0, 0.5) !important;
+}
+
+@keyframes leviosa-float {
+  0% { transform: translateY(0) rotate(0.5deg); }
+  50% { transform: translateY(-24px) rotate(-1deg); }
+  100% { transform: translateY(-40px) rotate(1.2deg); }
+}

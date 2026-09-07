@@ -1,0 +1,395 @@
+﻿/* ==========================================================================
+   ACT I: 3D WAX SEAL & UNFOLDING PARCHMENT ENVELOPE
+   ========================================================================== */
+
+.hero-envelope-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px 40px;
+  perspective: 1200px;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 30%, #15172b 0%, #080911 70%, #030307 100%);
+}
+
+.sky-stars {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(1.5px 1.5px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 40px 70px, #fffae0, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 90px 40px, #ffd700, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 160px 120px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(1.5px 1.5px at 240px 80px, #ffeb99, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 320px 140px, #ffffff, rgba(0,0,0,0));
+  background-repeat: repeat;
+  background-size: 350px 350px;
+  opacity: 0.65;
+  animation: stars-twinkle 6s infinite ease-in-out alternate;
+  pointer-events: none;
+}
+
+@keyframes stars-twinkle {
+  0% { opacity: 0.45; }
+  100% { opacity: 0.8; }
+}
+
+.castle-silhouette {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 180px;
+  opacity: 0.22;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-size: cover;
+}
+
+/* Flying Owl Intro Animation */
+.flying-owl-wrapper {
+  position: absolute;
+  top: 15%;
+  left: -120px;
+  width: 90px;
+  height: 60px;
+  z-index: 10;
+  pointer-events: none;
+  transition: transform 0.1s linear;
+}
+
+.flying-owl-wrapper.fly-in {
+  animation: owl-flight-across 4.2s cubic-bezier(0.2, 0.8, 0.4, 1) forwards;
+}
+
+@keyframes owl-flight-across {
+  0% { transform: translate3d(0, 0, 0) scale(0.6) rotate(10deg); opacity: 0; }
+  20% { opacity: 1; transform: translate3d(120px, -20px, 0) scale(0.9) rotate(-4deg); }
+  60% { transform: translate3d(240px, 30px, 0) scale(1.1) rotate(5deg); }
+  85% { transform: translate3d(360px, -10px, 0) scale(0.8) rotate(-6deg); opacity: 1; }
+  100% { transform: translate3d(480px, -80px, 0) scale(0.5) rotate(12deg); opacity: 0; }
+}
+
+/* 3D Envelope Container */
+.envelope-stage {
+  position: relative;
+  width: 330px;
+  max-width: 92%;
+  height: 220px;
+  margin: 30px auto;
+  perspective: 1000px;
+  z-index: 5;
+  cursor: pointer;
+  transition: transform 0.4s var(--ease-magic);
+}
+
+.envelope-stage:hover {
+  transform: translateY(-4px) scale(1.02);
+}
+
+.envelope-stage.opened {
+  cursor: default;
+  transform: none;
+}
+
+.envelope-body {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #e3cfa4 0%, #cfb887 50%, #b89d67 100%);
+  border-radius: 8px;
+  box-shadow: 
+    0 15px 35px rgba(0,0,0,0.6),
+    0 0 30px rgba(212, 175, 55, 0.2),
+    inset 0 0 40px rgba(78, 49, 19, 0.35);
+  border: 1px solid rgba(139, 115, 85, 0.7);
+  overflow: visible;
+  transform-style: preserve-3d;
+}
+
+/* Front triangular folds of the envelope */
+.envelope-pocket {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  z-index: 3;
+}
+
+.envelope-pocket::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 165px solid #d2bc8a;
+  border-right: 165px solid #d2bc8a;
+  border-top: 110px solid transparent;
+  filter: drop-shadow(0 -2px 5px rgba(0,0,0,0.15));
+}
+
+.envelope-pocket::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-bottom: 120px solid #c7b07d;
+  border-left: 165px solid transparent;
+  border-right: 165px solid transparent;
+  filter: drop-shadow(0 -3px 8px rgba(50,30,10,0.25));
+}
+
+/* Top Flap with 3D rotation */
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 125px;
+  transform-origin: top center;
+  transform-style: preserve-3d;
+  transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 4;
+}
+
+.flap-triangle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 165px solid transparent;
+  border-right: 165px solid transparent;
+  border-top: 120px solid #dfc999;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.35));
+}
+
+.envelope-stage.opened .envelope-flap {
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+
+/* Realistic 3D Crimson Wax Seal */
+.wax-seal-wrapper {
+  position: absolute;
+  top: 95px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 70px;
+  z-index: 6;
+  transition: all 0.5s cubic-bezier(0.3, 1.4, 0.5, 1);
+}
+
+.wax-seal {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #b21818 0%, #7c0a02 60%, #460000 100%);
+  box-shadow: 
+    0 6px 16px rgba(0,0,0,0.65),
+    0 0 15px rgba(124, 10, 2, 0.5),
+    inset 2px 2px 4px rgba(255,255,255,0.35),
+    inset -3px -3px 6px rgba(0,0,0,0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  animation: seal-pulse 2.8s infinite ease-in-out;
+}
+
+.wax-seal::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  border: 1px dashed rgba(243, 229, 171, 0.4);
+}
+
+.wax-monogram {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: #f7e6b8;
+  text-shadow: 1px 1px 2px #300, -1px -1px 2px rgba(255,255,255,0.3);
+  letter-spacing: -1px;
+}
+
+.wax-seal-label {
+  position: absolute;
+  bottom: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-family: var(--font-serif);
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-gold-bright);
+  text-shadow: 0 0 10px rgba(0,0,0,0.9);
+  pointer-events: none;
+  animation: float-soft 2s infinite alternate ease-in-out;
+}
+
+@keyframes seal-pulse {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 8px rgba(212,175,55,0.3)); }
+  50% { transform: scale(1.05); filter: drop-shadow(0 0 18px rgba(255,100,0,0.6)); }
+}
+
+@keyframes float-soft {
+  0% { transform: translateX(-50%) translateY(0); }
+  100% { transform: translateX(-50%) translateY(4px); }
+}
+
+/* Wax Breaking FX */
+.wax-seal-wrapper.broken {
+  animation: wax-shatter 0.6s forwards cubic-bezier(0.1, 0.9, 0.2, 1);
+  pointer-events: none;
+}
+
+@keyframes wax-shatter {
+  0% { transform: translateX(-50%) scale(1); opacity: 1; }
+  50% { transform: translateX(-50%) scale(1.35) rotate(15deg); filter: blur(1px); }
+  100% { transform: translateX(-50%) scale(1.8); opacity: 0; }
+}
+
+/* The Enchanted Unfolding Letter */
+.invitation-letter {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  background: #fbf7ee;
+  border-radius: 6px;
+  padding: 24px 20px;
+  border: 1px solid #c9b07a;
+  box-shadow: 
+    0 10px 30px rgba(0,0,0,0.45),
+    inset 0 0 35px rgba(184, 157, 103, 0.25);
+  z-index: 2;
+  transition: all 1s cubic-bezier(0.2, 0.9, 0.3, 1);
+  transform: translateY(0);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.envelope-stage.opened .invitation-letter {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(-90px);
+  z-index: 8;
+  box-shadow: 
+    0 25px 50px rgba(0,0,0,0.7),
+    0 0 30px rgba(212, 175, 55, 0.35);
+}
+
+.letter-border-inner {
+  border: 1px solid rgba(139, 115, 85, 0.5);
+  padding: 18px 14px;
+  position: relative;
+  text-align: center;
+}
+
+.letter-border-inner::before,
+.letter-border-inner::after {
+  content: '✦';
+  position: absolute;
+  font-size: 0.75rem;
+  color: var(--color-gold);
+}
+.letter-border-inner::before { top: 4px; left: 6px; }
+.letter-border-inner::after { bottom: 4px; right: 6px; }
+
+.letter-crest {
+  width: 44px;
+  height: 44px;
+  margin: 0 auto 10px;
+  color: var(--color-wax);
+}
+
+.letter-salutation {
+  font-family: var(--font-gothic);
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  color: var(--color-ink-faded);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.letter-names {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  color: #1a100a;
+  line-height: 1.25;
+  margin-bottom: 6px;
+  font-weight: 900;
+}
+
+.letter-names span {
+  font-family: var(--font-script);
+  font-size: 1.8rem;
+  color: var(--color-crimson);
+  display: inline-block;
+  margin: 0 4px;
+}
+
+.letter-vow {
+  font-family: var(--font-script);
+  font-size: 1.35rem;
+  color: #4a2810;
+  line-height: 1.2;
+  margin: 10px 0;
+}
+
+.letter-date-loc {
+  font-family: var(--font-serif);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: #5c3818;
+  border-top: 1px solid rgba(139, 115, 85, 0.4);
+  border-bottom: 1px solid rgba(139, 115, 85, 0.4);
+  padding: 8px 0;
+  margin-top: 10px;
+}
+
+/* Prompt to continue scrolling */
+.scroll-prompt-indicator {
+  margin-top: 80px;
+  text-align: center;
+  color: var(--color-gold);
+  font-family: var(--font-serif);
+  font-size: 0.78rem;
+  letter-spacing: 2px;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: all 0.8s 0.6s var(--ease-magic);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.envelope-stage.opened ~ .scroll-prompt-indicator {
+  opacity: 0.9;
+  transform: translateY(0);
+}
+
+.scroll-prompt-indicator .chevron-down {
+  animation: bounce-subtle 1.8s infinite ease-in-out;
+}
+
+@keyframes bounce-subtle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}

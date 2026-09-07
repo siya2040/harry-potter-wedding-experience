@@ -1,0 +1,214 @@
+﻿/* ==========================================================================
+   ACT II: MARAUDER'S MAP - FOOTSTEPS & INK CHRONICLES
+   ========================================================================== */
+
+.marauder-section {
+  position: relative;
+  min-height: 120vh;
+  padding: 80px 20px;
+  background-color: #f2e6c8;
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.08) 0%, rgba(139, 115, 85, 0.15) 100%),
+    linear-gradient(rgba(139, 115, 85, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 115, 85, 0.12) 1px, transparent 1px);
+  background-size: 100% 100%, 30px 30px, 30px 30px;
+  box-shadow: 
+    inset 0 30px 50px rgba(43, 24, 13, 0.4),
+    inset 0 -30px 50px rgba(43, 24, 13, 0.4);
+  color: var(--color-ink);
+  overflow: hidden;
+}
+
+/* Torn parchment top and bottom transitions */
+.parchment-tear-top {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 100%;
+  height: 24px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 30' preserveAspectRatio='none'%3E%3Cpath d='M0,0 L0,15 Q30,28 60,12 T120,24 T180,10 T240,25 T300,8 T360,22 T420,14 T480,26 T540,10 T600,24 T660,12 T720,26 T780,8 T840,24 T900,14 T960,26 T1020,10 T1080,24 T1140,12 L1200,20 L1200,0 Z' fill='%23080911'/%3E%3C/svg%3E") repeat-x;
+  background-size: 600px 24px;
+  z-index: 5;
+}
+
+.parchment-tear-bottom {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 24px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 30' preserveAspectRatio='none'%3E%3Cpath d='M0,30 L0,15 Q30,2 60,18 T120,6 T180,20 T240,5 T300,22 T360,8 T420,16 T480,4 T540,20 T600,6 T660,18 T720,4 T780,22 T840,6 T900,16 T960,4 T1020,20 T1080,6 T1140,18 L1200,10 L1200,30 Z' fill='%23080911'/%3E%3C/svg%3E") repeat-x;
+  background-size: 600px 24px;
+  z-index: 5;
+}
+
+/* Marauder Watermark Header */
+.map-header {
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 4;
+}
+
+.map-motto {
+  font-family: var(--font-script);
+  font-size: clamp(1.8rem, 5vw, 2.4rem);
+  color: #3b2211;
+  text-shadow: 0 1px 2px rgba(255,255,255,0.7);
+  display: block;
+  margin-bottom: 4px;
+  opacity: 0.92;
+}
+
+.map-title {
+  font-family: var(--font-gothic);
+  font-size: 1.15rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #7a1d13;
+  position: relative;
+  display: inline-block;
+  padding: 4px 18px;
+}
+
+.map-title::before,
+.map-title::after {
+  content: '— ✧ —';
+  margin: 0 10px;
+  color: #8b7355;
+}
+
+/* SVG Footstep Path Canvas / Overlay */
+.map-trail-container {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 850px;
+}
+
+.map-svg-path {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ink-trail-line {
+  fill: none;
+  stroke: #7a5433;
+  stroke-width: 2;
+  stroke-dasharray: 4 6;
+  stroke-opacity: 0.55;
+}
+
+/* Animated Footstep Markers */
+.footstep-node {
+  position: absolute;
+  width: 22px;
+  height: 38px;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.6);
+  transition: opacity 0.5s ease-out, transform 0.5s cubic-bezier(0.2, 1, 0.4, 1);
+  filter: drop-shadow(0 2px 4px rgba(60,30,10,0.3));
+}
+
+.footstep-node.visible {
+  opacity: 0.82;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.footstep-node svg {
+  width: 100%;
+  height: 100%;
+  fill: #44240e;
+}
+
+/* Story Milestones Along the Footsteps */
+.map-milestone {
+  position: relative;
+  z-index: 3;
+  width: 88%;
+  max-width: 320px;
+  background: rgba(255, 250, 240, 0.88);
+  border: 1px solid #9c7a4b;
+  border-radius: 8px;
+  padding: 16px 18px;
+  margin: 70px 0;
+  box-shadow: 
+    0 8px 20px rgba(43, 24, 13, 0.18),
+    inset 0 0 15px rgba(212, 175, 55, 0.15);
+  backdrop-filter: blur(2px);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.7s var(--ease-magic);
+}
+
+.map-milestone.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.map-milestone.left-card {
+  margin-right: auto;
+  margin-left: 5px;
+}
+
+.map-milestone.right-card {
+  margin-left: auto;
+  margin-right: 5px;
+}
+
+.milestone-badge {
+  font-family: var(--font-gothic);
+  font-size: 0.75rem;
+  letter-spacing: 1.5px;
+  color: #8b0000;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.milestone-badge::before {
+  content: '✦';
+  font-size: 0.7rem;
+}
+
+.milestone-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: #2b180d;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 6px;
+}
+
+.milestone-story {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: #4a2f1b;
+  line-height: 1.45;
+  font-style: italic;
+}
+
+/* Mischief Managed Footer Banner */
+.map-footer {
+  text-align: center;
+  margin-top: 50px;
+  position: relative;
+  z-index: 4;
+}
+
+.mischief-managed-text {
+  font-family: var(--font-script);
+  font-size: 2.1rem;
+  color: #44240e;
+  opacity: 0.85;
+}

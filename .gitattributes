@@ -1,0 +1,6 @@
+# GitHub Linguist Overrides - Prioritize Java in repository statistics
+css/* linguist-vendored
+js/* linguist-vendored
+index.html linguist-documentation
+run_local_server.bat linguist-vendored
+run_java_server.bat linguist-vendored
